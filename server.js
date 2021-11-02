@@ -1,13 +1,15 @@
+import "dotenv/config.js"
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import('./config/database.js')
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
-import { router as usersRouter } from './routes/users.js'
+import { router as usersRouter } from './routes/flights.js'
 
 // set up app
 const app = express()
