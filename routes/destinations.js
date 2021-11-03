@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import * as destinationsCtrl from '../controllers/destinations.js'
+import * as destinationCtrl from '../controllers/destination.js'
 const router = Router()
 
-router.get('/new', destinationsCtrl.new)
-router.post('/', destinationsCtrl.create)
+router.get('/new', destinationCtrl.new)
+router.post('/', destinationCtrl.create)
 
 
 export {

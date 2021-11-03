@@ -1,5 +1,5 @@
 import { Flight } from '../models/Flight.js'
-import { Destination } from '../models/dDstination.js'
+import { Destination } from '../models/Destination.js'
 
 function newDestination (req, res) {
   res.render('destinations/new', {
@@ -19,6 +19,7 @@ function create (req, res) {
   })
   res.redirect('/flights')
 }
+
 
 export {
   newDestination as new,
