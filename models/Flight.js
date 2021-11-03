@@ -18,7 +18,26 @@ const flightsSchema = new Schema({
     },
     departs: {
         type: Date,
-        default: new Date(new Date().setFullYear(newDate().getFullYear() +1))
+        default: new Date().setFullYear(new Date().getFullYear() + 1)
+    },
+    tickets: [ticketSchema],
+
+    // secure object reference??
+
+    destinations: [{
+        type: Schema.Types.ObjectId, ref: "Destination"
+    }]
+})
+
+const ticketSchema = new Schema({
+    seat: {
+        type: String,
+        //some Regex for specific selection
+        match: /[A-F][1-9]\d?/,
+        price: {
+            type: Number,
+            min: 0
+        }
     }
 })
 

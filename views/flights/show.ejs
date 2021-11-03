@@ -1,0 +1,48 @@
+<%- include("../partials/html-head.ejs")  %> 
+<%- include("../partials/nav.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/style.css"
+<main>
+  <h1><%= title  %> </h1>
+<!-- using code-along in class -->
+  <section>
+    <div>Flight Number</div>
+    <div><%= flight.flightNo %> </div>
+    <div>Airline</div>
+    <div><%= flight.airline %> </div>
+    <div>Airport</div>
+    <div><%= flight.airport %> </div>
+    <div>Departing</div>
+    <div><%= flight.departs %> </div>
+  </section>
+  <section class="ticket-info">
+    <h3>Buy Ticket</h3>
+<!-- fix bug in this section tonight -->
+    <form id="new-ticket" action="/flights/<%= flight._id %>/ticket" method="POST">
+      <h4>Seats: A1 - F99</h4>
+      <input name="seat" required pattern="[A-F][1-9]\d?">
+      <button type="submit">Purchase</button>
+    </form>
+  </section>
+  <section>
+    <% if (flight.tickets.length) { %> 
+      <% flight.tickets.forEach(function(ticket) { %>
+        Seat: <%= ticket.seat %>
+        Price: <%= ticket.price %>
+    <% }) %> 
+    <% } %> 
+  </section>
+  <section>
+    <ul >
+      <%- flight.destinations.map(d => `<li value="${d._id}">${d.airport}</li>`).join('') %>
+    </ul>
+    <form id="add-destinations" action="/flights/<%= flight._id %>/destinations" method="POST">
+      <select name="destinationId">
+        <% destinations.map(function(destination) { %>
+          <option value="<%=destination._id%>"><%= destination.airport %></option>
+          <% }) %> 
+        </select>
+        <button type="submit">Add Destination</button>
+    </form>
+  </section>
+</main>
+<%- include("../partials/footer.ejs")  %> 

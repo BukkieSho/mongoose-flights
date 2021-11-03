@@ -10,6 +10,7 @@ import('./config/database.js')
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
+import { router as destinationRouter} from './routes/destinations.js'
 import { router as flightsRouter } from './routes/flights.js'
 
 // set up app
@@ -32,10 +33,13 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+app.use(methodOverride('_method'))
+
 
 // mounted routers
 app.use('/', indexRouter)
 app.use('/flights', flightsRouter)
+app.use('/destinations', destinationRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
