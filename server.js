@@ -39,7 +39,7 @@ app.use(methodOverride('_method'))
 // mounted routers
 app.use('/', indexRouter)
 app.use('/flights', flightsRouter)
-app.use('/destinations', destinationRouter)
+app.use('/destinations', destinationsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
